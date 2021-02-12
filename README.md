@@ -1,2 +1,2 @@
 # AgenceVente
-Exemple d'agence: Toutes types des ventes (voitures, immobilière, animaux…)
+Exemple d'agence: Tous les types de ventes (voitures, immobilière, animaux…)
