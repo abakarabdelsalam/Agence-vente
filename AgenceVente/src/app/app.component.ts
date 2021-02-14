@@ -7,4 +7,15 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'AgenceVente';
+
+  monDispo = true;
+
+// fonction pour voir la disponiblté
+  getColor() {
+   if (this.monDispo) {
+     return 'red'
+   } else {
+     return 'green'
+   }
+ }
 }

@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
+
   logo = 'MonLogo'
   isDisabled = true;
 
@@ -13,9 +14,10 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
+ // foction qui active,disactive la classe home
   onClick() {
     this.isDisabled = false;
   }
+
 
 }
