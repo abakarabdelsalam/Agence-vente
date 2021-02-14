@@ -6,10 +6,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
+  logo = 'MonLogo'
+  isDisabled = true;
 
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  onClick() {
+    this.isDisabled = false;
   }
 
 }
