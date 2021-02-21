@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { PropertiesService } from '../services/properties.service';
 
 @Component({
@@ -6,26 +7,28 @@ import { PropertiesService } from '../services/properties.service';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit, OnDestroy {
 
   properties = [];
+  propertiesSubcription: Subscription;
 
      constructor(private propertiesService: PropertiesService) {
 
       }
   ngOnInit(): void {
-    this.propertiesService.getProperties().then(
-      (data:any) => {
-        console.log(data);
-        this.properties = data;
+    this.propertiesSubcription = this.propertiesService.propertiesSubject.subscribe(
+      (data:any[]) => {
+        this.properties=data
       }
-    ).catch(
-      (erros)=>{
-        console.log(erros);
-      }
-     )
+    )
+
+    this.propertiesService.emitPreperties();
 
   };
+
+   ngOnDestroy() {
+   this.propertiesSubcription.unsubscribe;
+ }
 
  //fonction pour voir la disponiblté
  getColor(index) {
@@ -36,7 +39,8 @@ export class HomeComponent implements OnInit {
 
    }
 
-  }
+ }
+
 
 
 }
