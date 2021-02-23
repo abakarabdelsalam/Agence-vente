@@ -1,0 +1,61 @@
+<div class="rounded shadow bg-info p-5">
+    <div class="row">
+        <div class="col-12 d-flex">
+            <h2 class="font-weight-light"><i class="fas fa-house-user"></i> Les type</h2>
+            <button type="button" class="btn btn-primary ml-auto" data-bs-toggle="modal" data-bs-target="#exampleModal"> <i class="fas fa-plus-circle"></i> Ajouter</button>
+        </div>
+    </div>
+    <hr class="mt-1 mb-5 bg-dark">
+    <div class="row">
+
+    </div>
+</div>
+
+<!--modal-->
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <form #propertiesForm="ngForm" (ngSubmit)="onSubmitPropertiesForm(propertiesForm) ">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <input type="text" placeholder="Titre" class="form-control" name="titre" ngModel required>
+                    </div>
+                    <div class="input-group mb-3">
+                        <label class="input-group-text" for="inputGroupSelect01">Categoriees</label>
+                        <select class="form-select" id="inputGroupSelect01" name="categorie" ngModel>
+                           <option selected>Choix du biens</option>
+                          <option value="1">Appartement</option>
+                          <option value="2">Maison</option>
+                            </select>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-6">
+                            <input type="text" placeholder="Surface(m²)" class="form-control" name="surface" ngModel>
+                        </div>
+                        <div class="form-group col-6">
+                            <input type="text" placeholder="nombre de pièces" class="form-control" name="pièces" ngModel>
+
+                        </div>
+
+                    </div>
+                    <div class="form-group">
+                        <textarea class="form-control w-100" placeholder="Description du bien" cols="30" rows="4"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" placeholder="Prix" class="form-control" name="price" ngModel>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary" [disabled]="propertiesForm.invalid">Save changes</button>
+                </div>
+            </div>
+        </form>
+
+    </div>
+</div>
