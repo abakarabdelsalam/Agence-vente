@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-administration-properties',
@@ -7,15 +7,26 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./administration-properties.component.css']
 })
 export class AdministrationPropertiesComponent implements OnInit {
+  propertiesForm: FormGroup;
 
-  constructor() { }
+  constructor(private  formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
+    this.initPropertiesForm();
   }
 
-  onSubmitPropertiesForm(form: NgForm) {
-    console.log(form);
-
+  onSubmitPropertiesForm() {
+        console.log(this.propertiesForm.value)
+    }
+  initPropertiesForm() {
+    this.propertiesForm = this.formBuilder.group({
+      titre: [ "", Validators.required],
+      categories: [ "", Validators.required],
+      surface: "",
+      description: [ "", Validators.required],
+      price: [ "", Validators.required],
+      pièces: ""
+    })
   }
 
 }
