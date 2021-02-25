@@ -32,6 +32,12 @@ export class PropertiesService {
     this.propertiesSubject.next(this.properties)
   }
 
+  // creation de properpties
+
+  createProperty(property) {
+    this.properties.push(property);
+  }
+
 
 
 
