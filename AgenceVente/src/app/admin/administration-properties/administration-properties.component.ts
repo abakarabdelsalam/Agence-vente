@@ -1,7 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
-import {PropertiesService} from 'src/app/services/properties.service'
+import { PropertiesService } from 'src/app/services/properties.service'
+
+
+
+
+
 
 @Component({
   selector: 'app-administration-properties',
@@ -9,9 +14,11 @@ import {PropertiesService} from 'src/app/services/properties.service'
   styleUrls: ['./administration-properties.component.css']
 })
 export class AdministrationPropertiesComponent implements OnInit {
+  @ViewChild('closebutton') closebutton;
   propertiesForm: FormGroup;
   propertiesSubcription: Subscription;
   properties: any[] = [];
+
 
   constructor(private  fb: FormBuilder, private propertiesService:PropertiesService) { }
 
@@ -27,19 +34,31 @@ export class AdministrationPropertiesComponent implements OnInit {
 
   onSubmitPropertiesForm() {
     const newProperty = this.propertiesForm.value
-    this.propertiesService.createProperty(newProperty)
-    console.log(this.properties)
+    this.propertiesService.createProperty(newProperty);
+  // $('#exampleModalLabel').modal.hide
 
-    }
+
+  }
+
+  public onSave() {
+    this.closebutton.nativeElement.click();
+  }
+
+
   initPropertiesForm() {
     this.propertiesForm = this.fb.group({
-      titre: [ "", Validators.required],
-      categories: [ "", Validators.required],
-      surface: "",
+      categorie:[ "", Validators.required],
+      capacity: [ "", Validators.required],
+      color: [ "", Validators.required],
+
       description: [ "", Validators.required],
       price: [ "", Validators.required],
       pièces: ""
     })
+  }
+
+  resetForm() {
+    this.propertiesForm.reset();
   }
 
 }

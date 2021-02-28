@@ -9,6 +9,8 @@ export class PropertiesService {
    {
      categorie: 'iphone',
      type: 'ipone X',
+     capacity: '70',
+     color:'couleur',
      monDispo: true
    },
    {
