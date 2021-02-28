@@ -34,6 +34,13 @@ export class PropertiesService {
     this.propertiesSubject.next(this.properties)
   }
 
+  //suppression de l'index
+
+  onDeleteProperties(index) {
+    this.properties.splice(index, 1);
+    this.emitPreperties();
+  }
+
   // creation de properpties
 
   createProperty(property) {

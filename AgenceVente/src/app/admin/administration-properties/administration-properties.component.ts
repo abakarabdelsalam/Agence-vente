@@ -39,9 +39,16 @@ export class AdministrationPropertiesComponent implements OnInit {
 
 
   }
-
+// funtion permet de de fiare quitter le foemulaire
   public onSave() {
     this.closebutton.nativeElement.click();
+  }
+
+  // funtion permet de suppriper un element du tableau
+
+  deleteProperties(index) {
+    this.propertiesService.onDeleteProperties(index);
+
   }
 
 
@@ -56,7 +63,7 @@ export class AdministrationPropertiesComponent implements OnInit {
       pièces: ""
     })
   }
-
+//funtion qui rafraichie le formulaire
   resetForm() {
     this.propertiesForm.reset();
   }
